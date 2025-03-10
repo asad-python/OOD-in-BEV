@@ -190,7 +190,7 @@ Our research presents a **novel approach to detecting unknown objects in autonom
 ## Model Performance on NuScenes and NuScenesOOD
 
 ### Lift-Splat-Shoot on NuScenes
-![LSS NuScenes](data/nuscenes/lss_nuscenes-ezgif.com-video-to-gif-converter.gif?raw=true "COIL100 Generation")
+![LSS NuScenes](https://raw.githubusercontent.com/asad-python/OOD-in-BEV/main/data/nuscenes/lss_nuscenes-ezgif.com-video-to-gif-converter.gif)
 
 ### Lift-Splat-Shoot on NuScenesOOD
 ![LSS OOD NuScenes](https://raw.githubusercontent.com/asad-python/OOD-in-BEV/main/data/nuscenes/lss_OOD_nuscenes-ezgif.com-video-to-gif-converter.gif)
@@ -200,6 +200,7 @@ Our research presents a **novel approach to detecting unknown objects in autonom
 
 ### Detection on StyleGAN-Augmented Dataset
 ![Detection StyleGAN YOLO](https://raw.githubusercontent.com/asad-python/OOD-in-BEV/main/data/nuscenes/DET_STYLE_GAN_YOLO1-ezgif.com-video-to-gif-converter.gif)
+
 
 🚀 **NuScenesOOD will be released soon! Stay tuned for updates!**
 
