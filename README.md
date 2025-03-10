@@ -190,19 +190,19 @@ Our research presents a **novel approach to detecting unknown objects in autonom
 ## Model Performance on NuScenes and NuScenesOOD
 
 ### Lift-Splat-Shoot on NuScenes
-![LSS NuScenes](data/nuscenes/lss_nuscenes-ezgif.com-video-to-gif-converter.gif)
+![LSS NuScenes](https://raw.githubusercontent.com/asad-python/OOD-in-BEV/main/data/nuscenes/lss_nuscenes-ezgif.com-video-to-gif-converter.gif)
 
 ### Lift-Splat-Shoot on NuScenesOOD
-![LSS OOD NuScenes](data/nuscenes/lss_OOD_nuscenes-ezgif.com-video-to-gif-converter.gif)
+![LSS OOD NuScenes](https://raw.githubusercontent.com/asad-python/OOD-in-BEV/main/data/nuscenes/lss_OOD_nuscenes-ezgif.com-video-to-gif-converter.gif)
 
 ### YOLO on StyleGAN-Augmented Dataset
-![StyleGAN YOLO](data/nuscenes/STYLE_GAN_YOLO-ezgif.com-video-to-gif-converter.gif)
+![StyleGAN YOLO](https://raw.githubusercontent.com/asad-python/OOD-in-BEV/main/data/nuscenes/STYLE_GAN_YOLO-ezgif.com-video-to-gif-converter.gif)
 
 ### Detection on StyleGAN-Augmented Dataset
-![Detection StyleGAN YOLO](data/nuscenes/DET_STYLE_GAN_YOLO1-ezgif.com-video-to-gif-converter.gif)
-
+![Detection StyleGAN YOLO](https://raw.githubusercontent.com/asad-python/OOD-in-BEV/main/data/nuscenes/DET_STYLE_GAN_YOLO1-ezgif.com-video-to-gif-converter.gif)
 
 🚀 **NuScenesOOD will be released soon! Stay tuned for updates!**
+
 
 
 
