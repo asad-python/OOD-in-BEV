@@ -11,7 +11,6 @@ This repository contains the implementation of our research on improving Out-of-
 - [Experiment Details](#experiment-details)
 - [Results](#results)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## Introduction
 
