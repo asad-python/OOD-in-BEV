@@ -1,6 +1,6 @@
 # Towards Robust Autonomous Driving: Out-of-Distribution Object Detection in Bird's Eye View Space
 
-This repository contains the implementation of our research on Out-of-Distribution (OOD) object detection in Bird's Eye View (BeV) space for autonomous driving. We introduce two novel approaches for handling unknown objects by adding random patches and OOD objects into the BeV projection. Our work enhances the robustness and safety of autonomous vehicles by enabling better detection of known and unknown objects.
+This repository contains the implementation of our research on Out-of-Distribution (OOD) object detection in Bird's Eye View (BeV) space for autonomous driving. We introduce two novel approaches for handling unknown objects by adding random patches and OOD objects into the BeV projection. Our work enhances the robustness and safety of autonomous vehicles by enabling better detection of known and unknown objects. The visual results are presented in MP4 files uploaded in the repository.
 
 ## Table of Contents
 
