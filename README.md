@@ -173,10 +173,10 @@ Our method **significantly improves OOD object detection** while maintaining str
 #### ✅ BeV Segmentation Without Patches
 ![BeV Without Patches](images/bev_no_patch.png)
 
-#### ❌ BeV Segmentation With Patches (Simulating OOD)
+#### ✅ BeV Segmentation With Patches (Simulating OOD)
 ![BeV With Patches](images/bev_patch.png)
 
-#### 🚀 NuScenesOOD Dataset Testing on YOLO-V8 (Fails to Detect OOD)
+#### ✅ NuScenesOOD Dataset Testing on YOLO-V8 (Fails to Detect OOD)
 ![NuScenesOOD on YOLO](images/yolo_fail.png)
 
 ➡ **Even state-of-the-art object detection models struggle with OOD detection, highlighting the importance of our approach!**
