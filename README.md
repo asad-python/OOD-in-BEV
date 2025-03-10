@@ -55,10 +55,10 @@ This work is built on the Lift-Splat-Shoot framework and extends it for better h
 
 ## Dataset
 
-We use the [nuScenes](https://www.nuscenes.org/) dataset for our experiments. This dataset contains annotated data from urban environments, collected using 360-degree cameras, LiDAR, and radar sensors.
+We use the [NuScenes](https://www.NuScenes.org/) dataset for our experiments. This dataset contains annotated data from urban environments, collected using 360-degree cameras, LiDAR, and radar sensors.
 
-- **Download Instructions**: Follow the instructions on the [nuScenes website](https://www.nuscenes.org/download) to download the dataset.
-- **Data Preparation**: Place the dataset files in a folder named `data/nuScenes/` within the repository.
+- **Download Instructions**: Follow the instructions on the [NuScenes website](https://www.NuScenes.org/download) to download the dataset.
+- **Data Preparation**: Place the dataset files in a folder named `data/NuScenes/` within the repository.
 
 ## Usage
 
@@ -67,9 +67,9 @@ We use the [nuScenes](https://www.nuscenes.org/) dataset for our experiments. Th
 To train the model, run the following command:
 
 ```sh
-python main.py train mini --dataroot=data/nuscenes --logdir=./runs --gpuid=-1
+python main.py train mini --dataroot=data/NuScenes --logdir=./runs --gpuid=-1
 
---dataroot: Path to the nuScenes dataset.
+--dataroot: Path to the NuScenes dataset.
 --logdir: Directory to store training logs.
 --gpuid: GPU ID to use for training (-1 for CPU).
 
@@ -79,21 +79,114 @@ To evaluate the trained model, use:
 
 sh
 Copy code
-python main.py eval_model_iou mini --modelf=model525000.pt --dataroot=data/nuscenes
+python main.py eval_model_iou mini --modelf=model525000.pt --dataroot=data/NuScenes
 --modelf: Path to the trained model file.
---dataroot: Path to the nuScenes dataset.
+--dataroot: Path to the NuScenes dataset.
 Visualizing Model Predictions
 To visualize the model's predictions:
 
 sh
 Copy code
-python main.py viz_model_preds mini --modelf=model525000.pt --dataroot=data/nuscenes --map_folder=data/nuscenes
+python main.py viz_model_preds mini --modelf=model525000.pt --dataroot=data/NuScenes --map_folder=data/NuScenes
 --modelf: Path to the trained model file.
---dataroot: Path to the nuScenes dataset.
+--dataroot: Path to the NuScenes dataset.
 --map_folder: Folder containing map data.
 Experiment Details
 Base Model: Our implementation is based on the Lift-Splat-Shoot framework.
 Patch Introduction: Random patches are used to cover vehicles during inference to simulate occlusion.
 OOD Object Introduction: Unknown objects from the COCO dataset are introduced during training to enhance the model's robustness.
 Hardware: Our experiments were conducted using NVIDIA RTX 6000 Ada Generation GPUs.
+
+## Experiment Details
+
+Our experiments focus on improving Out-of-Distribution (OOD) object detection in the Bird's Eye View (BeV) space using our **NuScenesOOD** dataset and **patch introduction** techniques.
+
+### Base Model
+
+We build upon the **Lift-Splat-Shoot (LSS)** framework, which projects multi-camera images into a BeV representation for scene understanding in autonomous driving.
+
+### Patch Introduction for OOD Detection
+
+- **Motivation**: Patches are introduced to simulate unknown objects by occluding known vehicles.
+- **Implementation**:
+  - During **training**, patches are randomly placed over **10% of vehicles** in each scene.
+  - Vehicles are selected using unique instance tokens to ensure **consistency across frames**.
+  - The model is trained to classify objects as **known** or **unknown** without explicit OOD labels.
+
+### Introducing OOD Objects
+
+- **NuScenesOOD Dataset**:
+  - Augmented vehicles with patterns from **StyleGAN** to create **OOD objects**.
+  - Additional **random objects** (e.g., fire hydrants, animals) from the **COCO dataset** to simulate real-world OOD challenges.
+  - BeV projection is modified to represent unknown objects separately.
+
+### Training Setup
+
+- **Batch Size**: 8
+- **Learning Rate**: 0.001 (cosine decay)
+- **Optimizer**: AdamW
+- **Hardware**: NVIDIA RTX 6000 Ada GPUs
+- **Training Time**: ~12 hours for 50 epochs
+
+---
+
+## Results
+
+Our method **significantly improves OOD object detection** while maintaining strong performance for known objects.
+
+### 1. Object Segmentation Performance (IoU)
+
+| Method | Car (IoU) | Vehicles (IoU) |
+|--------|----------|---------------|
+| CNN \cite{mani2020monolayout} | 22.78 | 24.25 |
+| Fiery \cite{fiery} | - | 35.08 |
+| Frozen Encoder \cite{roddick2020pon} | 25.51 | 26.83 |
+| OFT \cite{roddick2018oft} | 29.72 | 30.05 |
+| Lift-Splat-Shoot \cite{philion2020lift} | 32.06 | 32.07 |
+| PON \cite{roddick2020pon} | 24.70 | - |
+| FISHING \cite{hendy2020fishingnet} | - | 30.00 |
+| SimpleBEV \cite{simplebev} | - | **55.7** |
+| **Ours (NuScenesOOD + Patches)** | **35.67** | **36.32** |
+
+➡ **Our approach improves segmentation for unknown objects while maintaining high accuracy for known vehicles.**
+
+### 2. Impact of Patch Introduction on IoU
+
+| Patch Type | Mean IoU | Observation |
+|------------|----------|-------------|
+| Random (10% for each scene) | 11.0 | Significant IoU drop due to patches |
+| Vehicles without Patch | 28.0 | Decreased IoU due to occlusions |
+| Optimized Placement | **49.0** | Best performance with refined patching |
+
+➡ **Patching significantly impacts segmentation and forces the model to learn better OOD object detection.**
+
+### 3. OOD Object Segmentation Results
+
+| Object Type | Mean IoU | Observation |
+|------------|---------|-------------|
+| Known Objects (Vehicles) | **47.56** | High accuracy for regular vehicles |
+| OOD Objects (Augmented Patterns) | **38.91** | Strong performance in detecting unknown objects |
+
+➡ **Our model successfully learns to segment unknown objects from the NuScenesOOD dataset!**
+
+### 4. Visual Results
+
+#### ✅ BeV Segmentation Without Patches
+![BeV Without Patches](images/bev_no_patch.png)
+
+#### ❌ BeV Segmentation With Patches (Simulating OOD)
+![BeV With Patches](images/bev_patch.png)
+
+#### 🚀 NuScenesOOD Dataset Testing on YOLO-V8 (Fails to Detect OOD)
+![NuScenesOOD on YOLO](images/yolo_fail.png)
+
+➡ **Even state-of-the-art object detection models struggle with OOD detection, highlighting the importance of our approach!**
+
+---
+
+## Conclusion
+
+Our research presents a **novel approach to detecting unknown objects in autonomous driving using Bird’s Eye View (BeV) perception.** By introducing **random patches** and **OOD objects** through our **NuScenesOOD dataset**, we demonstrate significant improvements in **OOD detection** while maintaining high accuracy for known objects.
+
+🚀 **NuScenesOOD will be released soon! Stay tuned for updates!**
 
