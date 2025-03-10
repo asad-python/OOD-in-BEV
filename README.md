@@ -10,7 +10,7 @@ This repository contains the implementation of our research on Out-of-Distributi
 - [Usage](#usage)
 - [Experiment Details](#experiment-details)
 - [Results](#results)
-- [Contributing](#contributing)
+- [Conclusion](#conclusion)
 
 ## Introduction
 
@@ -168,20 +168,6 @@ Our method **significantly improves OOD object detection** while maintaining str
 
 ➡ **Our model successfully learns to segment unknown objects from the NuScenesOOD dataset!**
 
-### 4. Visual Results
-
-#### ✅ BeV Segmentation Without Patches
-![BeV Without Patches](images/bev_no_patch.png)
-
-#### ✅ BeV Segmentation With Patches (Simulating OOD)
-![BeV With Patches](images/bev_patch.png)
-
-#### ✅ NuScenesOOD Dataset Testing on YOLO-V8 (Fails to Detect OOD)
-![NuScenesOOD on YOLO](images/yolo_fail.png)
-
-➡ **Even state-of-the-art object detection models struggle with OOD detection, highlighting the importance of our approach!**
-
----
 
 ## Conclusion
 
