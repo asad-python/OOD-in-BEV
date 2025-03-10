@@ -65,7 +65,7 @@ We use the [NuScenes](https://www.NuScenes.org/) dataset for our experiments. Th
 
 To train the model, run the following command:
 
-```sh
+sh
 python main.py train mini --dataroot=data/NuScenes --logdir=./runs --gpuid=-1
 
 --dataroot: Path to the NuScenes dataset.
