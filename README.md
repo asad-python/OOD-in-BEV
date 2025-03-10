@@ -187,5 +187,22 @@ Our method **significantly improves OOD object detection** while maintaining str
 
 Our research presents a **novel approach to detecting unknown objects in autonomous driving using Bird’s Eye View (BeV) perception.** By introducing **random patches** and **OOD objects** through our **NuScenesOOD dataset**, we demonstrate significant improvements in **OOD detection** while maintaining high accuracy for known objects.
 
+## Model Performance on NuScenes and NuScenesOOD
+
+### Lift-Splat-Shoot on NuScenes
+![LSS NuScenes](data/nuscenes/lss_nuscenes-ezgif.com-video-to-gif-converter.gif)
+
+### Lift-Splat-Shoot on NuScenesOOD
+![LSS OOD NuScenes](data/nuscenes/lss_OOD_nuscenes-ezgif.com-video-to-gif-converter.gif)
+
+### YOLO on StyleGAN-Augmented Dataset
+![StyleGAN YOLO](data/nuscenes/STYLE_GAN_YOLO-ezgif.com-video-to-gif-converter.gif)
+
+### Detection on StyleGAN-Augmented Dataset
+![Detection StyleGAN YOLO](data/nuscenes/DET_STYLE_GAN_YOLO1-ezgif.com-video-to-gif-converter.gif)
+
+
 🚀 **NuScenesOOD will be released soon! Stay tuned for updates!**
+
+
 
