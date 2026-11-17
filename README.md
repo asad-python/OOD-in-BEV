@@ -116,8 +116,7 @@ We build upon the **Lift-Splat-Shoot (LSS)** framework, which projects multi-cam
 
 - **NuScenesOOD Dataset**:
   - Augmented vehicles with patterns from **StyleGAN** to create **OOD objects**.
-  - Additional **random objects** (e.g., fire hydrants, animals) from the **COCO dataset** to simulate real-world OOD challenges.
-  - BeV projection is modified to represent unknown objects separately.
+
 
 ### Training Setup
 
